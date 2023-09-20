@@ -25,7 +25,7 @@ class SeriesCreated extends Mailable
         public int $episodiosPorTemporada,
     )
     {
-        //
+        $this->subject = "Série $nomeSerie criada";
     }
 
     /**
@@ -33,12 +33,12 @@ class SeriesCreated extends Mailable
      *
      * @return \Illuminate\Mail\Mailables\Envelope
      */
-    public function envelope()
-    {
-        return new Envelope(
-            subject: 'Series Created',
-        );
-    }
+    // public function envelope()
+    // {
+    //     return new Envelope(
+    //         subject: 'Series Created',
+    //     );
+    // }
 
     /**
      * Get the message content definition.

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Series;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,5 +31,10 @@ Route::get('/email', function() {
 
     );
 });
+
+// Route::get('/teste-app', function () {
+//     $result = Series::all();
+//     return $result;
+// });
 
 require __DIR__ . '/auth.php';
