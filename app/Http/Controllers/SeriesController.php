@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Series;
-use App\Mail\SeriesCreated;
+use App\Events\SeriesCreated;
 use App\Repositories\SeriesRepository;
 use App\Http\Requests\SeriesFormRequest;
-use App\Models\User;
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
+
 
 class SeriesController extends Controller
 {
@@ -35,20 +35,12 @@ class SeriesController extends Controller
     {
         $serie = $this->repository->add($request);
 
-        $userList = User::all();
-        
-        foreach ($userList as $index => $user) {
-            $email = new SeriesCreated(
-                $serie->nome,
-                $serie->id,
-                $request->seasonsQty,
-                $request->episodesPerSeason
-            );
-    
-             $when = now()->addSeconds($index * 5);
-    
-            Mail::to($user)->later($when, $email);
-        }
+        SeriesCreated::dispatch(
+            $serie->nome,
+            $serie->id,
+            $request->seasonsQty,
+            $request->episodesPerSeason
+        );
 
         return to_route('series.index')
             ->with('mensagem.sucesso', "Série '{$serie->nome}' adicionada com sucesso");

@@ -15,14 +15,16 @@ class EloquentSeriesRepository implements SeriesRepository
         return DB::transaction(function () use ($request) {
             $serie = Series::create($request->all());
             $seasons = [];
+
             for ($i = 1; $i <= $request->seasonsQty; $i++) {
+                info($serie->id);
                 $seasons[] = [
                     'series_id' => $serie->id,
                     'number' => $i,
                 ];
             }
             Season::insert($seasons);
-
+      
             $episodes = [];
             foreach ($serie->seasons as $season) {
                 for ($j = 1; $j <= $request->episodesPerSeason; $j++) {
