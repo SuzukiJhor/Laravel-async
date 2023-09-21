@@ -7,6 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## Projeto
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Este é um projeto de estudo desenvolvido em Laravel para aprender e aprimorar as habilidades relacionadas ao envio de emails em aplicações web. O objetivo deste projeto é criar uma base sólida de conhecimento sobre como o Laravel facilita o envio de emails de forma eficiente e Assíncrono.
+
